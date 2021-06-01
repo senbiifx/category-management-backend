@@ -33,7 +33,6 @@ Here is a brief API documentation:
   Response:
   ```
     200
-
     {
         "status": "success",
         "data": [
@@ -97,7 +96,7 @@ Here is a brief API documentation:
             },
             {
                 "categoryId": 10,
-                "name": "Plain T-Shirts",
+                "name": "Men",
                 "parentId": null,
                 "children": [
                     {
