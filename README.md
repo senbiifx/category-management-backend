@@ -1,10 +1,18 @@
 # Pre-requisites
   - Maven
   - JDK 8
+  - JAVA_HOME set as an environment variable
 
 # How to run
+
+Windows:
 ```sh
-$ mvn spring-boot:run
+$ mvnw spring-boot:run
+```
+
+Mac:
+```sh
+$ ./mvnw spring-boot:run
 ```
 
 # Code Coverage
