@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: fashioncategorymanagement
+  profiles:
+    active: local
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog.yaml
+    enabled: true
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+logging:
+  level:
+    ROOT: DEBUG
+server:
+  port: 8060
+  use-forward-headers: false
