@@ -26,7 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.deleteById(categoryId);
     }
 
-    public void addCategory(Category category){
+    public Category addCategory(Category category){
         Optional<Integer> parentId =
                 Optional.ofNullable(category)
                         .map(Category::getParent)
@@ -38,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
                             .orElseThrow(() -> new PreconditionException(ErrorCode.INVALID_PARENT));
             category.setParent(parent);
         }
-        categoryRepository.save(category);
+        return categoryRepository.save(category);
     }
 
     public void updateCategory(int id, Category category){

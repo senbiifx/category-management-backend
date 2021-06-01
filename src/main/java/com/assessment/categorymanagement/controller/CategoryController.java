@@ -38,9 +38,7 @@ public class CategoryController {
     })
     @GetMapping
     public ResponseEntity<Response<List<CategoryDto>>> getCategories() {
-        TypeMap<Category, CategoryDto> typeMap =
-                            modelMapper.typeMap(Category.class, CategoryDto.class)
-                                        .addMapping(src -> src.getParent().getCategoryId(), CategoryDto::setParentId);
+        TypeMap<Category, CategoryDto> typeMap = categoryToDtoMapper();
         List<Category> categories = categoryService.getCategories();
         List<CategoryDto> categoryDtos = categories.stream().map(typeMap::map).collect(Collectors.toList());
         return ResponseEntity.ok(
@@ -73,14 +71,17 @@ public class CategoryController {
             @ApiResponse(code = 500, message = "Something went wrong.")
     })
     @PostMapping
-    public ResponseEntity<Response<ConfirmationResponse>> addCategory(@Valid @RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Response<CategoryDto>> addCategory(@Valid @RequestBody CategoryDto categoryDto) {
         Category parent = Optional.ofNullable(categoryDto.getParentId()).map(Category::new).orElse(null);
         Category category = new Category(null, categoryDto.getName(), parent);
-        categoryService.addCategory(category);
+        Category newCategory = categoryService.addCategory(category);
+
+        CategoryDto newCategoryDto = categoryToDtoMapper().map(newCategory);
+
         return ResponseEntity.ok(
-                Response.<ConfirmationResponse>builder()
+                Response.<CategoryDto>builder()
                         .status(ResponseStatus.SUCCESS)
-                        .data(new ConfirmationResponse("Category has been added successfully."))
+                        .data(newCategoryDto)
                         .build());
     }
 
@@ -102,5 +103,10 @@ public class CategoryController {
                         .status(ResponseStatus.SUCCESS)
                         .data(new ConfirmationResponse("Category has been updated successfully."))
                         .build());
+    }
+
+    private TypeMap<Category, CategoryDto> categoryToDtoMapper(){
+        return modelMapper.typeMap(Category.class, CategoryDto.class)
+                        .addMapping(src -> src.getParent().getCategoryId(), CategoryDto::setParentId);
     }
 }

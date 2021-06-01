@@ -40,6 +40,9 @@ public class CategoryControllerTest {
 
     @Test
     public void addCategory() {
+        when(categoryService.addCategory(any())).thenReturn(new Category(1, "dadas", null));
+        when(modelMapper.typeMap(Category.class, CategoryDto.class))
+                .thenReturn(new ModelMapper().typeMap(Category.class, CategoryDto.class));
         categoryController.addCategory(new CategoryDto(null, "sample", 1, null));
         verify(categoryService, times(1)).addCategory(any());
     }
