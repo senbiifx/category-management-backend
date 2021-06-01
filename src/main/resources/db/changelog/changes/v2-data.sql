@@ -8,7 +8,7 @@ INSERT INTO category(category_id, name, parent_id) VALUES
         (7, 'Printed T-Shirts', 6),
         (8, 'Casual T-Shirts', 6),
         (9, 'Plain T-Shirts', 6),
-(10, 'Plain T-Shirts', null),
+(10, 'Men', null),
     (11, 'Footwear', 10),
         (12, 'Branded', 11),
         (13, 'Non-Branded', 11),
