@@ -2,12 +2,15 @@
   - Maven
   - JDK 8
 
-
-
 # How to run
 ```sh
 $ mvn spring-boot:run
 ```
+
+# Code Coverage
+![Alt text](jacoco.png?raw=true "Code Coverage")
+
+
 
 # Relationship Diagram
 ![Alt text](http://www.plantuml.com/plantuml/png/JOvD2i8m48NtSufP2xc0b5Bm83AQHocOYOolOAdUtGWIN7xmlP_fGGkkvIO2vy9DJqRCDJRTHVLm_T5voNfKNyi5eSCmmn56v75iLafVrQsWESIJ3UyMSFx7v2tIoryrfRhtCH6PuBdz-000?raw=true "ERD")

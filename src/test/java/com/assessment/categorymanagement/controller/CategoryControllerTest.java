@@ -1,6 +1,6 @@
 package com.assessment.categorymanagement.controller;
 
-import com.assessment.categorymanagement.common.Response;
+import com.assessment.categorymanagement.common.dto.Response;
 import com.assessment.categorymanagement.dto.CategoryDto;
 import com.assessment.categorymanagement.entity.Category;
 import com.assessment.categorymanagement.service.CategoryService;

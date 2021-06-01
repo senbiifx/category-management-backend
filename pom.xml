@@ -17,6 +17,8 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<liquibase.version>3.8.0</liquibase.version>
+		<jacoco.version>0.8.3</jacoco.version>
+		<jacoco.percentage.instruction>0.60</jacoco.percentage.instruction>
 	</properties>
 
 	<dependencies>
@@ -95,6 +97,69 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- Jacoco code coverage -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>**/*App.*</exclude>
+								<exclude>**/com/assessment/categorymanagement/config/**</exclude>
+								<exclude>**/com/assessment/categorymanagement/dto/**</exclude>
+								<exclude>**/com/assessment/categorymanagement/entity/**</exclude>
+								<exclude>**/com/assessment/categorymanagement/**/dto/**</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+					<!-- attached to Maven test phase -->
+					<execution>
+						<id>jacoco-check</id>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+							<excludes>
+								<exclude>**/*App.*</exclude>
+								<exclude>**/com/assessment/categorymanagement/config/**</exclude>
+								<exclude>**/com/assessment/categorymanagement/dto/**</exclude>
+								<exclude>**/com/assessment/categorymanagement/entity/**</exclude>
+								<exclude>**/com/assessment/categorymanagement/**/dto/**</exclude>
+							</excludes>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>INSTRUCTION</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>${jacoco.percentage.instruction}</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 

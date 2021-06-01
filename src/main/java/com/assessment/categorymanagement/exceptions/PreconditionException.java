@@ -1,4 +1,4 @@
-package com.assessment.categorymanagement.common;
+package com.assessment.categorymanagement.exceptions;
 
 import lombok.Getter;
 

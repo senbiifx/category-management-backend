@@ -1,4 +1,4 @@
-package com.assessment.categorymanagement.common;
+package com.assessment.categorymanagement.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

@@ -1,8 +1,6 @@
-package com.assessment.categorymanagement.config;
+package com.assessment.categorymanagement.exceptions;
 
-import com.assessment.categorymanagement.common.ErrorCode;
-import com.assessment.categorymanagement.common.PreconditionException;
-import com.assessment.categorymanagement.common.Response;
+import com.assessment.categorymanagement.common.dto.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.assessment.categorymanagement.service;
 
-import com.assessment.categorymanagement.common.ErrorCode;
-import com.assessment.categorymanagement.common.PreconditionException;
+import com.assessment.categorymanagement.exceptions.ErrorCode;
+import com.assessment.categorymanagement.exceptions.PreconditionException;
 import com.assessment.categorymanagement.entity.Category;
 import com.assessment.categorymanagement.repository.CategoryRepository;
 import lombok.AllArgsConstructor;

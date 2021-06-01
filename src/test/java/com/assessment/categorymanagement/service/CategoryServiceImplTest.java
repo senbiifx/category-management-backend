@@ -1,6 +1,6 @@
 package com.assessment.categorymanagement.service;
 
-import com.assessment.categorymanagement.common.PreconditionException;
+import com.assessment.categorymanagement.exceptions.PreconditionException;
 import com.assessment.categorymanagement.entity.Category;
 import com.assessment.categorymanagement.repository.CategoryRepository;
 import org.junit.Test;
@@ -105,6 +105,17 @@ public class CategoryServiceImplTest {
                 Optional.of(new Category(12, "Sample", new Category(13))));
 
         categoryService.updateCategory(10, new Category(10, "Sample", new Category(12)));
+
+        verify(categoryRepository, times(1)).save(any());
+    }
+
+    @Test
+    public void updateCategory_noParent() {
+        when(categoryRepository.findById(any())).thenReturn(
+                Optional.of(new Category(10, "Sample", new Category(12))),
+                Optional.of(new Category(12, "Sample", new Category(13))));
+
+        categoryService.updateCategory(10, new Category(10, "Sample", null));
 
         verify(categoryRepository, times(1)).save(any());
     }

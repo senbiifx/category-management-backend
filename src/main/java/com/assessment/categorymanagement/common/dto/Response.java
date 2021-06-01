@@ -1,4 +1,4 @@
-package com.assessment.categorymanagement.common;
+package com.assessment.categorymanagement.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -16,6 +16,5 @@ public class Response<T> {
     private String message;
     private T data;
     private String errorCode;
-    private String errorDetails;
 }
 
