@@ -205,7 +205,7 @@ Here is a brief API documentation. These APIs follow the [JSend REST Specificati
         "data": {
             "categoryId": 22,
             "name": "Sample",
-            "parentId": null,
+            "parentId": 1,
             "children": null
         }
     }
