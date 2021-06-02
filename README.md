@@ -18,7 +18,7 @@ $ mvn spring-boot:run
 
 # API Usage
 
-Here is a brief API documentation:
+Here is a brief API documentation. These APIs follow the [JSend REST Specification](https://github.com/omniti-labs/jsend)
 
 <details>
   <summary>
@@ -193,16 +193,20 @@ Here is a brief API documentation:
     200
 
     {
-      "status": "success",
-      "data": {
-          "message": "Category has been added successfully."
-      }
+        "status": "success",
+        "data": {
+            "categoryId": 22,
+            "name": "Sample",
+            "parentId": null,
+            "children": null
+        }
     }
   ```
   ```
     400 - The specified parentId does not exist.
 
     {
+      "status" : "fail",
       "message": "Invalid parentId",
       "errorCode": "CAT-ERR-002"
     }
@@ -238,6 +242,7 @@ Here is a brief API documentation:
     400 - The specified parentId does not exist.
 
     {
+      "status" : "fail",
       "message": "Invalid parentId",
       "errorCode": "CAT-ERR-002"
     }
@@ -246,6 +251,7 @@ Here is a brief API documentation:
     400 - If the parentId is equal to the categoryId, this is returned.
 
     {
+      "status" : "fail",
       "message": "Invalid parentId",
       "errorCode": "CAT-ERR-002"
     }
