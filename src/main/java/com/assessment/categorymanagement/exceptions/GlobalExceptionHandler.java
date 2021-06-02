@@ -1,6 +1,7 @@
 package com.assessment.categorymanagement.exceptions;
 
 import com.assessment.categorymanagement.common.dto.Response;
+import com.assessment.categorymanagement.common.dto.ResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,8 @@ public class GlobalExceptionHandler {
         log.error("Exception thrown", ex);
         Response response = Response.<String>builder()
                 .message(ErrorCode.INTERNAL_SERVER_ERROR.getErrorDesc())
-                .errorCode(ErrorCode.INTERNAL_SERVER_ERROR.getErrorCode())
+                .status(ResponseStatus.ERROR)
+                .code(ErrorCode.INTERNAL_SERVER_ERROR.getErrorCode())
                 .build();
 
         return ResponseEntity
@@ -28,7 +30,8 @@ public class GlobalExceptionHandler {
     protected ResponseEntity preconditionExceptionHandler(PreconditionException ex) {
         Response response = Response.<String>builder()
                 .message(ex.getErrorCode().getErrorDesc())
-                .errorCode(ex.getErrorCode().getErrorCode())
+                .status(ResponseStatus.FAIL)
+                .code(ex.getErrorCode().getErrorCode())
                 .build();
 
         return ResponseEntity

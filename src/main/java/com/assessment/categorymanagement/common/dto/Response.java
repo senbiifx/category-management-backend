@@ -15,6 +15,6 @@ public class Response<T> {
     private ResponseStatus status;
     private String message;
     private T data;
-    private String errorCode;
+    private String code;
 }
 
