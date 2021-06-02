@@ -294,3 +294,7 @@ Swagger documentation is also available at:
 ```
 http://localhost:8060/swagger-ui.html
 ```
+
+# Front-end Implementation
+
+The front-end implementation is located here: https://github.com/senebii/category-management-frontend
